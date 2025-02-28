@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Layout from '../components/Layout';
+import { PageStyle } from '../components/Common/CardStyles';
+import { UserContext } from '../contexts/UserContext';
+import LeftPane from '../components/Layout/LeftPane';
 
 function Dashboard() {
+  const { user } = useContext(UserContext);
+
+
   return (
     <Layout>
-      <header className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-            Dashboard
-          </h1>
+      <main className="w-full p-4 h-screen overflow-y-scroll" style={PageStyle}>
+        {/* <SearchUser /> */}
+        <div className="mx-auto max-w-7xl flex">
+          <div className='w-full flex flex-col lg:flex-row gap-4 '>
+            <div className='lg:flex lg:flex-col lg:w-1/5 gap-4'>
+              <LeftPane user={user} theme={'purple'} />
+            </div>
+            <section className="lg:w-4/5 flex flex-col">
+               
+            </section>
+          </div>
         </div>
-      </header>
-      <main>
-        <div className="mx-auto max-w-7xl px-4 py-6"></div>
       </main>
     </Layout>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 const modalRoot = document.getElementById('modal-root');
 
+// eslint-disable-next-line react/prop-types
 const Modal = ({ isOpen, onClose, children }) => {
   useEffect(() => {
     const handleEsc = (event) => {

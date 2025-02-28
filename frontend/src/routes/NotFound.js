@@ -1,8 +1,10 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 export default function NotFound() {
   return (
-    <>
+    <Layout>
       <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
           <p className="text-base font-semibold text-indigo-600">404</p>
@@ -25,6 +27,6 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-    </>
+    </Layout>
   );
 }
