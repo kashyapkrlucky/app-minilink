@@ -8,7 +8,9 @@ This is the base architechture for react app, to create a new app from it
 `mkdir project-name`
 
 #### initiate git
-`git init`
+`sh
+git init
+`
 
 #### add remote for this repository
 `git remote add upstream https://github.com/kashyapkrlucky/pa-mern.git`
