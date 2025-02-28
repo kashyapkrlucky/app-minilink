@@ -9,7 +9,7 @@ const config = {
     jwtSecret: process.env.JWT_SECRET,
   },
   production: {
-    db: process.env.PROD_DB,
+    db: process.env.DB_URL,
     port: process.env.PORT,
     jwtSecret: process.env.JWT_SECRET,
   },

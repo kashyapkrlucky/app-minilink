@@ -1,19 +1,17 @@
 // src/routes/user.js
 const express = require('express');
-const { getUser, getUsers, createUser, signIn, updateUser, deleteUser, forgotPassword, resetPassword } = require('../controllers/userController');
+const controller = require('../controllers/user');
 const router = express.Router();
-const authMiddleware = require('../middleware/authMiddleware');
+const { authenticate, authenticateUser } = require('../middlewares/authentication');
 
-router.post('/signin', signIn);
-router.post('/forgot-password', forgotPassword);
+router.post('/sign-in', controller.signIn);
+router.post('/create', controller.createUser);
+router.post('/forgot-password', controller.forgotPassword);
 
-// Protected routes (require authentication)
-router.use(authMiddleware.authenticate); // Middleware to verify JWT token
-router.get('/', getUsers);
-router.get('/:id', getUser);
-router.post('/create', createUser);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
-router.post('/reset-password/:token', resetPassword);
+router.get('/profile/:id', authenticate, controller.getUser);
+router.put('/update', authenticateUser, controller.updateUser);
+router.delete('/delete/:id', authenticateUser, controller.deleteUser);
+router.post('/change-password', authenticateUser, controller.changePassword);
+router.get('/search/:str', authenticate, controller.search);
 
 module.exports = router;

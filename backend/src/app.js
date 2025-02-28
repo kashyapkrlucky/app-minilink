@@ -22,7 +22,6 @@ swaggerSetup(app);
 const metricsEndpoint = require('./middlewares/metrics');
 app.get('/metrics', metricsEndpoint);
 
-
 // Error Handling
 app.use(notFoundHandler);
 app.use(errorHandler);

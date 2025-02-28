@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const rateLimit = require('express-rate-limit');
+// const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
 // const csurf = require('csurf');
 const morgan = require('morgan');
@@ -11,11 +11,11 @@ const logger = require('../utils/logger');
 // const csrfProtection = csurf({ cookie: true });
 
 // Rate Limiting
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    message: 'Too many requests from this IP, please try again later',
-});
+// const limiter = rateLimit({
+//     windowMs: 15 * 60 * 1000,
+//     max: 100,
+//     message: 'Too many requests from this IP, please try again later',
+// });
 
 module.exports = (app) => {
     app.use(helmet());
@@ -24,7 +24,7 @@ module.exports = (app) => {
     app.use(express.static('public'))
     app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
-    app.use(limiter);
+    // app.use(limiter);
     if (process.env.NODE_ENV !== 'test') {
         app.use(morgan('combined', { stream: { write: message => logger.info(message.trim()) } }));
         app.use(morgan(':method :url [:status] :res[content-length] - :response-time ms'));
@@ -40,5 +40,4 @@ module.exports = (app) => {
     //     res.cookie('XSRF-TOKEN', req.csrfToken());
     //     next();
     // });
-    app.use(limiter);
 }

@@ -1,0 +1,113 @@
+
+module.exports = (app) => {
+    // Backup Month Data
+    cron.schedule('0 0 1 * *', () => {
+        // ();
+    });
+
+    // Remove month data
+    cron.schedule('0 0 5 * *', () => {
+        // ();
+    });
+}
+
+
+
+// const http = require('http').Server(app);
+
+// const socketIO = require('socket.io')(http, {
+//     cors: {
+//         origin: "http://localhost:3001"
+//     }
+// });
+
+// socketIO.on('connection', (socket) => {
+//     console.log(`⚡: ${socket.id} user just connected!`);
+//     socket.on('message', (data) => {
+//         // console.log(data);
+//         updateSocket(data, socket.id);
+//         // socketIO.emit('messageResponse', 'data');
+//     });
+    
+//     socket.on('friendList', async (data) => {
+//         const users = await getSocketIds(data);
+//         console.log(users);
+//         socketIO.emit('socketIds', users);
+//     });
+
+//     socket.on('logout', (data) => {
+//         updateSocket(data, '');
+//     });
+
+//     socket.on('disconnect', () => {
+//         console.log('🔥: A user disconnected');
+//     });
+// });
+
+// http.listen(3000, function () {
+//     console.log(colors.magenta(`Your server is running on PORT ${PORT}`));
+// });
+
+
+
+// exports.getRecentPosts = async (req, res) => {
+//     const { id } = req.params;
+//     const list1 = await Connection.find({ from: id, status: 2 }).select({ to: 1 });
+//     const list2 = await Connection.find({ to: id, status: 2 }).select({ from: 1 });
+//     const list = await [...list1, ...list2];
+//     const ids = await list.map(item => item.to || item.from);
+//     ids.push(ObjectId(id));
+//     await Post.aggregate([
+//         {
+//             $match: {
+//                 createdBy: { $in: ids }
+//             }
+//         },
+//         {
+//             $lookup: {
+//                 from: 'users',
+//                 localField: 'createdBy',
+//                 foreignField: '_id',
+//                 as: 'createdBy'
+//             }
+//         },
+//         { $unwind: '$createdBy' },
+//         {
+//             $lookup: {
+//                 from: 'comments',
+//                 localField: '_id',
+//                 foreignField: 'post',
+//                 as: 'comments'
+//             }
+//         },
+//         {
+//             $lookup: {
+//                 from: 'likes',
+//                 localField: '_id',
+//                 foreignField: 'post',
+//                 as: 'likes'
+//             }
+//         },
+//         {
+//             $project: {
+//                 'created_at': 1,
+//                 'description': 1,
+//                 'createdBy._id': 1,
+//                 'createdBy.name': 1,
+//                 'createdBy.email': 1,
+//                 'createdBy.avatar': 1,
+//                 'likes._id': 1,
+//                 'likes.likedBy': 1,
+//                 'comments.commentBy': 1,
+//                 'comments.text': 1,
+//             }
+//         },
+//         { $sort: { 'created_at': -1 } }
+//     ]).exec((err, users) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             success(res, users, 'users found');
+//         }
+//     });
+// }
