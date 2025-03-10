@@ -7,12 +7,14 @@ import SignUp from './routes/SignUp';
 import SignIn from './routes/SignIn';
 import Dashboard from './routes/Dashboard';
 import NotFound from './routes/NotFound';
+import Examples from './routes/Examples';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/examples" element={<Examples />} />
         <Route exact path="/sign-in" element={<SignIn />} />
         <Route exact path="/sign-up" element={<SignUp />} />
         <Route element={<ProtectedRoute />}>

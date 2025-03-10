@@ -1,4 +1,4 @@
-export const AppName = "Feature Flags";
+export const AppName = "Prime App - MERN";
 
 export const AuthNavigation = [
     { name: 'Sign Up', url: '/sign-up', current: true },

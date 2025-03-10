@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
-import Input from "../components/Common/Input";
-import Button from "../components/Common/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import HttpClient from '../services/httpClient';
 import { UserContext } from '../contexts/UserContext';
 import { useLoading } from '../contexts/LoadingContext';
 import { AppName } from "../services/utils";
+import AppButton from '../components/Common/AppButton';
+import AppInput from '../components/Common/AppInput';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -65,10 +65,10 @@ function SignUp() {
                         </p>
                     </div>
                     <form onSubmit={onSubmit} className="flex flex-col gap-4 my-10" method="POST">
-                        <Input label="Full Name" type="text" name="fullName" onChange={onChange} required />
-                        <Input label="Email Address" type="email" name="email" onChange={onChange} required />
-                        <Input label="Password" type="password" name="password" onChange={onChange} required />
-                        <Button classes="mt-8 bg-gray-600 hover:bg-gray-800 focus-visible:outline-gray-600" label="Submit"></Button>
+                        <AppInput label="Full Name" placeholder='please enter full name' type="text" name="fullName" onChange={onChange} required />
+                        <AppInput label="Email Address" placeholder='please enter email'type="email" name="email" onChange={onChange} required />
+                        <AppInput label="Password" type="password" placeholder='please enter password'name="password" onChange={onChange} required />
+                        <AppButton classes="mt-8 bg-gray-600 hover:bg-gray-800 focus-visible:outline-gray-600">Submit</AppButton>
                     </form>
                 </section>
 

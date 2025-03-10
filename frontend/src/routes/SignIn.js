@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Input from "../components/Common/Input";
-import Button from "../components/Common/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import HttpClient from '../services/httpClient';
 import { UserContext } from '../contexts/UserContext';
 import { useToast } from '../contexts/ToastContext';
 import { useLoading } from '../contexts/LoadingContext';
 import { AppName } from "../services/utils";
+import AppButton from '../components/Common/AppButton';
+import AppInput from '../components/Common/AppInput';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -60,13 +60,13 @@ function SignIn() {
           <div className='flex flex-col gap-1'>
             <h2 className="text-2xl font-bold">Sign In</h2>
             <p className="text-sm leading-6 tracking-wide">
-              New to NetWorkIn? <NavLink to={'/sign-up'} className={'px-1 text-gray-800'}>Join Now</NavLink>
+              New to {AppName}? <NavLink to={'/sign-up'} className={'px-1 text-gray-800'}>Join Now</NavLink>
             </p>
           </div>
           <form onSubmit={onSubmit} className="flex flex-col gap-4 my-10" method="POST">
-            <Input label="Email Address" type="email" name="email" onChange={onChange} required />
-            <Input label="Password" type="password" name="password" onChange={onChange} required />
-            <Button classes="mt-8 bg-gray-600 hover:bg-gray-800 focus-visible:outline-gray-600" label="Sign In"></Button>
+            <AppInput label="Email Address" placeholder='please enter your email' type="email" name="email" onChange={onChange} required />
+            <AppInput label="Password" placeholder='please enter your password' type="password" name="password" onChange={onChange} required />
+            <AppButton classes="mt-8 bg-gray-600 hover:bg-gray-800 focus-visible:outline-gray-600">Submit</AppButton>
           </form>
         </section>
 
