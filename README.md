@@ -35,6 +35,6 @@ A simple and easy-to-use URL shortener app that allows you to shorten long URLs 
 1. Clone the repository to your local machine.
 
    ```bash
-   git clone https://github.com/yourusername/url-shortener.git
+   git clone https://github.com/kashyapkrlucky/app-minilink.git
    cd url-shortener
    ```
