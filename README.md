@@ -22,19 +22,3 @@ A simple and easy-to-use URL shortener app that allows you to shorten long URLs 
 
 3. **Authentication**:
    - Create an account or log in to manage your links and access stats for your shortened URLs.
-
-## Setup
-
-### Prerequisites
-
-- Node.js
-- MongoDB
-
-### Running the App
-
-1. Clone the repository to your local machine.
-
-   ```bash
-   git clone https://github.com/kashyapkrlucky/app-minilink.git
-   cd url-shortener
-   ```
