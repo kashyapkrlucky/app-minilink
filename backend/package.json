@@ -1,7 +1,7 @@
 {
-  "name": "pa-mern",
+  "name": "app-minilink",
   "version": "1.0.0",
-  "description": "This is the backend architecture for prime MERN app",
+  "description": "This is the backend architecture for minilink app",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kashyapkrlucky/pa-mern.git"
+    "url": "git+https://github.com/kashyapkrlucky/app-minilink.git"
   },
   "author": "kashyapkrlucky",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kashyapkrlucky/pa-mern/issues"
+    "url": "https://github.com/kashyapkrlucky/app-minilink/issues"
   },
-  "homepage": "https://github.com/kashyapkrlucky/pa-mern#readme",
+  "homepage": "https://github.com/kashyapkrlucky/app-minilink#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "chalk": "^4.1.2",
@@ -41,6 +41,7 @@
     "mongoose": "^8.4.4",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
+    "nanoid": "^5.1.5",
     "prom-client": "^15.1.3",
     "socket.io": "^4.7.5",
     "supertest": "^7.0.0",

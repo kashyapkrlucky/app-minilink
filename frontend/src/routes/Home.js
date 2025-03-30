@@ -1,44 +1,55 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import Layout from '../components/Layout';
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import Layout from "../components/Layout";
+import axios from "axios";
+import CreateLinkForm from "../components/Links/CreateLinkForm";
+import ViewLink from "../components/Links/ViewLink";
 
+/**
+ * Home Component
+ *
+ * This is the main page where users can input a long URL to shorten and view the result.
+ * The page also displays any errors and the shortened URL.
+ */
 function Home() {
   const { t } = useTranslation();
+  const [shortUrl, setShortUrl] = useState(null);
+  const [error, setError] = useState(null);
+  /**
+   * Clears the short URL state on load
+   */
+  useEffect(() => {
+    setShortUrl(null);
+  }, []);
+
+  /**
+   * Handles the shortening of the long URL
+   */
+  const handleShorten = async (longUrl) => {
+    setError(null);
+    try {
+      const { data } = await axios.post("http://localhost:3000/shorten", {
+        longUrl,
+      });
+      setShortUrl(data);
+    } catch (err) {
+      setShortUrl("");
+      setError("Failed to shorten URL. Try again.");
+    }
+  };
   return (
     <Layout>
-      <main className="bg-white">
+      <main className="bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen">
         <div className="relative isolate px-6 pt-6 lg:px-8">
           <div className="mx-auto max-w-2xl py-16 sm:py-18 lg:py-16">
-            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                Announcing our next round of funding.{' '}
-                <Link to="/" className="font-semibold text-indigo-600">
-                  <span aria-hidden="true" className="absolute inset-0" />
-                  Read more <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            </div>
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                {t('welcome')}
+                {t("welcome")}
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                {t('description')}
-              </p>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Link
-                  to="/"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Get started
-                </Link>
-                <Link
-                  to="/"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Learn more <span aria-hidden="true">→</span>
-                </Link>
+              <div className="mt-10 flex flex-col items-center justify-center gap-x-6">
+                <CreateLinkForm onShorten={handleShorten} />
+                {error && <p className="text-red-500 mt-2">{error}</p>}
+                {shortUrl && <ViewLink shortUrl={shortUrl} />}
               </div>
             </div>
           </div>

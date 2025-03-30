@@ -1,26 +1,26 @@
-const express = require('express');
-const routes = require('./routes');
-const connectDB = require('./config/db');
-const { errorHandler, notFoundHandler } = require('./middlewares/errorHandler');
+const express = require("express");
+const routes = require("./routes");
+const connectDB = require("./config/db");
+const { errorHandler, notFoundHandler } = require("./middlewares/errorHandler");
 
 const app = express();
 
 // Database connection
-if (process.env.NODE_ENV !== 'test') {
-    connectDB();
+if (process.env.NODE_ENV !== "test") {
+  connectDB();
 }
 
 // Middleware
-require('./middlewares')(app);
+require("./middlewares")(app);
 
 // Routes
-app.use('/api', routes);
+app.use("/", routes);
 
-const swaggerSetup = require('./config/swagger');
+const swaggerSetup = require("./config/swagger");
 swaggerSetup(app);
 
-const metricsEndpoint = require('./middlewares/metrics');
-app.get('/metrics', metricsEndpoint);
+const metricsEndpoint = require("./middlewares/metrics");
+app.get("/metrics", metricsEndpoint);
 
 // Error Handling
 app.use(notFoundHandler);
