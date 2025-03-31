@@ -49,6 +49,10 @@ exports.getShortLink = async (shortUrl, req) => {
   return { longUrl: link.longUrl };
 };
 
+/**
+ * Get a list of links
+ * @returns {Object} - ShortLink list of objects.
+ */
 exports.getLinkStats = async () => {
   const links = await ShortLink.find().select(
     "shortUrl longUrl clicks createdAt"
